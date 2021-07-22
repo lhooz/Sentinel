@@ -1,0 +1,264 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+pressure1
+{
+    // Mandatory entries (unmodifiable)
+    type            pressure;
+    libs            ("libfieldFunctionObjects.so");
+
+    // Mandatory entries (runtime modifiable)
+    mode            total;
+
+    // Optional entries (runtime modifiable)
+    p               p;
+    U               U;
+    rho             rhoInf;
+    rhoInf          1.0; // enabled if rho=rhoInf
+    pRef            0.0; //101325.0;
+    hydroStaticMode none;
+    g               (0 -9.81 0); // enabled if hydroStaticMode != none
+    hRef            0.0;         // enabled if hydroStaticMode != none
+    pInf            0.0;
+    UInf            (1 0 0);
+}
+
+Mach_inlet
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+
+    log             true;
+    writeControl    writeTime;
+    writeFields     true;
+
+    surfaceFormat   none;
+    regionType      patch;
+    name            inlet;
+
+    operation       areaNormalAverage; //weightedAreaAverage;
+    //weightField     phi;
+    scaleFactor     -0.0029412;
+    fields          (U);
+}
+
+pt_inlet
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+
+    log             true;
+    writeControl    writeTime;
+    writeFields     true;
+
+    surfaceFormat   none;
+    regionType      patch;
+    name            inlet;
+
+    operation       weightedAreaAverage;
+    weightField     phi;
+    scaleFactor     1.225;
+    fields          (total(p));
+}
+
+//////////////////////////////////////////////////
+Mach_AMIi_l0_c2
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+
+    log             true;
+    writeControl    writeTime;
+    writeFields     true;
+
+    surfaceFormat   none;
+    regionType      patch;
+    name            AMIi_l0_c2;
+
+    operation       areaNormalAverage; //weightedAreaAverage;
+    //weightField     phi;
+    scaleFactor     -0.0029412;
+    fields          (U);
+}
+
+pt_AMIi_l0_c2
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+
+    log             true;
+    writeControl    writeTime;
+    writeFields     true;
+
+    surfaceFormat   none;
+    regionType      patch;
+    name            AMIi_l0_c2;
+
+    operation       weightedAreaAverage;
+    weightField     phi;
+    scaleFactor     1.225;
+    fields          (total(p));
+}
+
+
+//////////////////////////////////////////////////
+Mach_AMIi_l0_c3
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+
+    log             true;
+    writeControl    writeTime;
+    writeFields     true;
+
+    surfaceFormat   none;
+    regionType      patch;
+    name            AMIi_l0_c3;
+
+    operation       areaNormalAverage; //weightedAreaAverage;
+    //weightField     phi;
+    scaleFactor     -0.0029412;
+    fields          (U);
+}
+
+pt_AMIi_l0_c3
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+
+    log             true;
+    writeControl    writeTime;
+    writeFields     true;
+
+    surfaceFormat   none;
+    regionType      patch;
+    name            AMIi_l0_c3;
+
+    operation       weightedAreaAverage;
+    weightField     phi;
+    scaleFactor     1.225;
+    fields          (total(p));
+}
+
+//////////////////////////////////////////////////
+Mach_AMIi_l1_c2
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+
+    log             true;
+    writeControl    writeTime;
+    writeFields     true;
+
+    surfaceFormat   none;
+    regionType      patch;
+    name            AMIi_l1_c2;
+
+    operation       areaNormalAverage; //weightedAreaAverage;
+    //weightField     phi;
+    scaleFactor     -0.0029412;
+    fields          (U);
+}
+
+pt_AMIi_l1_c2
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+
+    log             true;
+    writeControl    writeTime;
+    writeFields     true;
+
+    surfaceFormat   none;
+    regionType      patch;
+    name            AMIi_l1_c2;
+
+    operation       weightedAreaAverage;
+    weightField     phi;
+    scaleFactor     1.225;
+    fields          (total(p));
+}
+
+
+//////////////////////////////////////////////////
+Mach_AMIi_l1_c3
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+
+    log             true;
+    writeControl    writeTime;
+    writeFields     true;
+
+    surfaceFormat   none;
+    regionType      patch;
+    name            AMIi_l1_c3;
+
+    operation       areaNormalAverage; //weightedAreaAverage;
+    //weightField     phi;
+    scaleFactor     -0.0029412;
+    fields          (U);
+}
+
+pt_AMIi_l1_c3
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+
+    log             true;
+    writeControl    writeTime;
+    writeFields     true;
+
+    surfaceFormat   none;
+    regionType      patch;
+    name            AMIi_l1_c3;
+
+    operation       weightedAreaAverage;
+    weightField     phi;
+    scaleFactor     1.225;
+    fields          (total(p));
+}
+
+//////////////////////////////////////////////////
+Mach_outlet
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+
+    log             true;
+    writeControl    writeTime;
+    writeFields     true;
+
+    surfaceFormat   none;
+    regionType      patch;
+    name            outlet;
+
+    operation       areaNormalAverage; //weightedAreaAverage;
+    //weightField     phi;
+    scaleFactor     0.0029412;
+    fields          (U);
+}
+
+pt_outlet
+{
+    type            surfaceFieldValue;
+    libs            ("libfieldFunctionObjects.so");
+
+    log             true;
+    writeControl    writeTime;
+    writeFields     true;
+
+    surfaceFormat   none;
+    regionType      patch;
+    name            outlet;
+
+    operation       weightedAreaAverage;
+    weightField     phi;
+    scaleFactor     1.225;
+    fields          (total(p));
+}
+// ************************************************************************* //
