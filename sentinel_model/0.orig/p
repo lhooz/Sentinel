@@ -38,7 +38,7 @@ boundaryField
         phi phi.air;
     }
 
-    walls
+    "walls.*"
     {
         type fixedFluxPressure;
         value $internalField;

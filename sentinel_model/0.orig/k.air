@@ -16,7 +16,7 @@ FoamFile
 
 dimensions          [0 2 -2 0 0 0 0];
 
-internalField       uniform 1;
+internalField       uniform 0.01;
 
 boundaryField
 {
@@ -34,7 +34,7 @@ boundaryField
         value              $internalField;
     }
 
-    walls
+    "walls.*"
     {
         type               kqRWallFunction;
         value              $internalField;

@@ -24,7 +24,7 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value           uniform (0 20 0);
+        value           uniform (0 5 0);
     	//type                flowRateInletVelocity;
         //volumetricFlowRate  1.698;
     	//value               $internalField;
@@ -34,11 +34,10 @@ boundaryField
     {
         type            pressureInletOutletVelocity;
         phi             phi.air;
-        inletValue      uniform (0 0 0);
-        value           uniform (0 0 0);
+        value           $internalField;
     }
 
-    walls
+    "walls.*"
     {
         type            noSlip;
     }

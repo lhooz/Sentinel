@@ -15,7 +15,7 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 allFeatureEdges
 {
-    surfaces    (funnelCFD.stl);
+    surfaces    (funnelCFD.stl sensor.stl);
 
     // Optional treatment of surface regions when loading
     // (single, file, offset, merge)

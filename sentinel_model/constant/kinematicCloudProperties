@@ -69,13 +69,13 @@ subModels
         model1
         {
             type            patchInjection;
-            massTotal       0.004;
-            SOI             0.002;
+            massTotal       0.003;
+            SOI             0.0;
             parcelBasisType mass;
             patch           inlet;
             duration        1;
-            parcelsPerSecond 2000000;
-            U0              (0 20 0);
+            parcelsPerSecond 800000;
+            U0              (0 5 0);
             flowRateProfile constant 1;
             sizeDistribution
             {
@@ -99,6 +99,10 @@ subModels
     {
         patches
         (
+            walls_sensor
+            {
+                type stick;
+            }
             walls
             {
                 type rebound;
@@ -146,7 +150,7 @@ subModels
         alphaMin 0.0001;
         rhoMin 1.0;
         applyLimiting true;
-        applyGravity false;
+        applyGravity true;
         particleStressModel
         {
             type HarrisCrighton;

@@ -24,6 +24,12 @@ geometry
         type    triSurfaceMesh;
         name    walls;
     }
+    
+    "sensor.stl"
+    {
+        type    triSurfaceMesh;
+        name    walls_sensor;
+    }
 };
 
 castellatedMeshControls
@@ -46,6 +52,11 @@ castellatedMeshControls
     refinementSurfaces
     {
         walls
+        {
+            level (3 3);
+        }
+        
+        walls_sensor
         {
             level (3 3);
         }
@@ -81,6 +92,11 @@ addLayersControls
     layers
     {
         walls
+        {
+            nSurfaceLayers 2;
+        }
+        
+        walls_sensor
         {
             nSurfaceLayers 2;
         }

@@ -32,7 +32,7 @@ boundaryField
         value              $internalField;
     }
 
-    walls
+    "walls.*"
     {
         type               nutkWallFunction;
         value              $internalField;
