@@ -19,16 +19,23 @@ addLayers       false;
 
 geometry
 {
-    "funnelCFD.stl"
+    "sentinel.stl"
     {
         type    triSurfaceMesh;
         name    walls;
     }
     
-    "sensor.stl"
+    "sensorPad.stl"
     {
         type    triSurfaceMesh;
         name    walls_sensor;
+    }
+    
+    refinebox
+    {
+        type    searchableBox;       // region defined by bounding box
+        min     (-0.02 -0.061 -0.075);
+        max     (0.02 0.1 -0.035);
     }
 };
 
@@ -45,7 +52,7 @@ castellatedMeshControls
     (
         { 
             file "allFeatureEdges.eMesh"; 
-            level 3;
+            level 4;
         }
     );
 
@@ -53,12 +60,12 @@ castellatedMeshControls
     {
         walls
         {
-            level (3 3);
+            level (4 4);
         }
         
         walls_sensor
         {
-            level (3 3);
+            level (5 5);
         }
     }
 
@@ -66,6 +73,11 @@ castellatedMeshControls
 
     refinementRegions
     {
+        refinebox
+        {
+            mode inside;
+            levels ((1.0 3));         // refinement level 4 (1.0 entry ignored)
+        }
     }
 
     locationInMesh (0 -0.1 0);
@@ -77,8 +89,8 @@ snapControls
     nSmoothPatch 3;
     tolerance 4.0;
     nSolveIter 30;
-    nRelaxIter 10;
-    nFeatureSnapIter 10;
+    nRelaxIter 5;
+    nFeatureSnapIter 5;
     //nFaceSplitInterval 15;
     implicitFeatureSnap true;
     explicitFeatureSnap false;

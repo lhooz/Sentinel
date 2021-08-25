@@ -25,16 +25,20 @@ boundaryField
     {
         type            fixedValue;
         value           uniform (0 5 0);
-    	//type                flowRateInletVelocity;
-        //volumetricFlowRate  1.698;
-    	//value               $internalField;
     }
 
-    "outlet|left|right|up|down"
+    "left|right|up|down"
     {
-        type            pressureInletOutletVelocity;
-        phi             phi.air;
+        type symmetry;
+    }
+
+    outlet
+    {
+        type            inletOutlet;
+        inletValue      $internalField;
         value           $internalField;
+        
+        phi             phi.air;
     }
 
     "walls.*"

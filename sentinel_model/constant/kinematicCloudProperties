@@ -18,7 +18,7 @@ FoamFile
 solution
 {
     active          true;
-    coupled         false;
+    coupled         true;
     transient       yes;
     cellValueSourceCorrection off;
 
@@ -69,12 +69,13 @@ subModels
         model1
         {
             type            patchInjection;
-            massTotal       0.003;
-            SOI             0.0;
-            parcelBasisType mass;
+            parcelBasisType fixed;
             patch           inlet;
             duration        1;
-            parcelsPerSecond 800000;
+            parcelsPerSecond 2.16e7;
+            nParticle       1;
+            massTotal       1;//not used
+            SOI             0;
             U0              (0 5 0);
             flowRateProfile constant 1;
             sizeDistribution
@@ -82,10 +83,10 @@ subModels
                 type        normal;
                 normalDistribution
                 {
-                    expectation 100e-6;
-                    variance 25e-6;
-                    minValue 20e-6;
-                    maxValue 180e-6;
+                    expectation 5.8e-6;//particle diameter
+                    variance 1e-6;
+                    minValue 5e-6;
+                    maxValue 7e-6;
                 }
             }
         }

@@ -3,9 +3,17 @@
 
 restore0Dir
 
+rm -r log.decomposePar
 runApplication decomposePar -force
 
-runParallel MPPICFoam
+#cp -f system/fvSchemes.dpm system/fvSchemes
+#cp -f system/fvSolution.dpm system/fvSolution
+#cp -f constant/kinematicCloudProperties.dpm constant/kinematicCloudProperties
+#rm -r log.DPMFoam
+#runParallel DPMFoam
 
-#pvbatch pvpost_diffuser.py | tee log.pvpost
-#cp -r ./diffuser_design/0_diffuser_main/log.simpleFoam ./pv_results
+cp -f system/fvSchemes.mppic system/fvSchemes
+cp -f system/fvSolution.mppic system/fvSolution
+cp -f constant/kinematicCloudProperties.mppic constant/kinematicCloudProperties
+rm -r log.MPPICFoam
+runParallel MPPICFoam

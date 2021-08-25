@@ -15,12 +15,12 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 scale   1;
 
-xl -0.18;
-xu 0.18;
-yl -0.15;
-yu 0.28;
-zl -0.163;
-zu 0.15;
+xl -0.3;
+xu 0.3;
+yl -0.3;
+yu 0.4;
+zl -0.45;
+zu 0.3;
 
 vertices
 (
@@ -36,7 +36,7 @@ vertices
 
 blocks
 (
-    hex (0 1 2 3 4 5 6 7) (45 54 39) 
+    hex (0 1 2 3 4 5 6 7) (40 47 50) 
     simpleGrading 
     (1 1 1)
 );
@@ -49,48 +49,52 @@ boundary
 (
     left
     {
-        type patch;
+        type symmetry;
         faces
         (
             (0 4 7 3)
         );
     }
+    
     right
     {
-        type patch;
+        type symmetry;
         faces
         (
             (2 6 5 1)
         );
     }
+    
     up
     {
-        type wall;
+        type symmetry;
         faces
         (
             (4 5 6 7)
         );
     }
-
+    
     down
     {
-        type wall;
+        type symmetry;
         faces
         (
             (0 3 2 1)
         );
     }
+    
     inlet
     {
-        type wall;
+        type patch;
         faces
         (
             (0 1 5 4)
         );
     }
+    
     outlet
     {
-        type wall;
+        type patch;
         faces
         (
             (3 7 6 2)

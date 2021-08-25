@@ -26,16 +26,15 @@ boundaryField
         value $internalField;
     }
 
-    "outlet|left|right|up|down"
+    "left|right|up|down"
     {
-        //type fixedValue;
-        //value uniform 0;
-    	type totalPressure;
-    	p0 $internalField;
-    	value $internalField;
+        type symmetry;
+    }
 
-        U U.air;
-        phi phi.air;
+    outlet
+    {
+        type fixedValue;
+        value uniform 0;
     }
 
     "walls.*"

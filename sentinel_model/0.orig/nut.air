@@ -26,7 +26,12 @@ boundaryField
         value              $internalField;
     }
 
-    "outlet|left|right|up|down"
+    "left|right|up|down"
+    {
+        type               symmetry;
+    }
+
+    outlet
     {
         type               calculated;
         value              $internalField;
@@ -34,7 +39,7 @@ boundaryField
 
     "walls.*"
     {
-        type               nutkWallFunction;
+        type               calculated;
         value              $internalField;
     }
 }
