@@ -47,8 +47,8 @@ constantProperties
 {
     parcelTypeId 1;
 
-    rhoMin          0;
-    minParcelMass   0;
+    rhoMin          1e-15;
+    minParcelMass   1e-15;
 
     rho0            1000;
     youngsModulus   1e8;
@@ -78,7 +78,8 @@ subModels
             parcelBasisType fixed;
             patch           inlet;
             duration        1;
-            parcelsPerSecond 2.16e7;
+            parcelsPerSecond 2.16e7;//harvest
+            //parcelsPerSecond 1.31e5;//typical
             nParticle       1;
             massTotal       1;//not used
             SOI             0;
@@ -140,8 +141,9 @@ subModels
 
     surfaceFilmModel none;
 
-    collisionModel pairCollision;
-
+    //collisionModel pairCollision;
+    collisionModel none;
+    
     pairCollisionCoeffs
     {
         maxInteractionDistance  0.0025;

@@ -104,18 +104,21 @@ subModels
             walls_sensor
             {
                 type stick;
+                UrMax   1e-4;
             }
             walls
             {
                 type rebound;
                 e    0.97;
                 mu   0.09;
+                UrMax   1e-4;
             }
             inlet
             {
                 type rebound;
                 e    0.97;
                 mu   0.09;
+                UrMax   1e-4;
             }
             "outlet|left|right|up|down"
             {
@@ -128,7 +131,7 @@ subModels
 
     surfaceFilmModel none;
 
-    packingModel implicit;
+    packingModel implicit;//explicit;
 
     explicitCoeffs
     {
@@ -163,7 +166,17 @@ subModels
         }
     }
 
-    dampingModel none;
+    dampingModel none;//relaxation;
+
+    relaxationCoeffs
+    {
+        timeScaleModel
+        {
+            type nonEquilibrium;
+            alphaPacked 0.65;
+            e 0.9;
+        }
+    }
 
     isotropyModel stochastic;
 

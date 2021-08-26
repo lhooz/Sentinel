@@ -19,13 +19,13 @@ addLayers       false;
 
 geometry
 {
-    "sentinel.stl"
+    "sentinel_flatSensor.stl"
     {
         type    triSurfaceMesh;
         name    walls;
     }
     
-    "sensorPad.stl"
+    "sensorPad_flatSensor.stl"
     {
         type    triSurfaceMesh;
         name    walls_sensor;

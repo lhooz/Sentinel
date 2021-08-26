@@ -72,7 +72,8 @@ subModels
             parcelBasisType fixed;
             patch           inlet;
             duration        1;
-            parcelsPerSecond 2.16e7;
+            parcelsPerSecond 2.16e7;//harvest
+            //parcelsPerSecond 1.31e5;//typical
             nParticle       1;
             massTotal       1;//not used
             SOI             0;
@@ -103,18 +104,21 @@ subModels
             walls_sensor
             {
                 type stick;
+                UrMax   1e-4;
             }
             walls
             {
                 type rebound;
                 e    0.97;
                 mu   0.09;
+                UrMax   1e-4;
             }
             inlet
             {
                 type rebound;
                 e    0.97;
                 mu   0.09;
+                UrMax   1e-4;
             }
             "outlet|left|right|up|down"
             {
@@ -127,7 +131,7 @@ subModels
 
     surfaceFilmModel none;
 
-    packingModel implicit;
+    packingModel implicit;//explicit;
 
     explicitCoeffs
     {
@@ -162,7 +166,17 @@ subModels
         }
     }
 
-    dampingModel none;
+    dampingModel none;//relaxation;
+
+    relaxationCoeffs
+    {
+        timeScaleModel
+        {
+            type nonEquilibrium;
+            alphaPacked 0.65;
+            e 0.9;
+        }
+    }
 
     isotropyModel stochastic;
 
