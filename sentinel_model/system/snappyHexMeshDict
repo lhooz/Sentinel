@@ -13,19 +13,25 @@ FoamFile
     object      snappyHexMeshDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-castellatedMesh true;
-snap            true;
-addLayers       false;
+castellatedMesh false;
+snap            false;
+addLayers       true;
 
 geometry
 {
-    "sentinel_flatSensor.stl"
+    "sentinel.stl"
     {
         type    triSurfaceMesh;
         name    walls;
     }
     
-    "sensorPad_flatSensor.stl"
+    /*"camera.stl"
+    {
+        type    triSurfaceMesh;
+        name    walls;
+    }*/
+    
+    "sensor.stl"
     {
         type    triSurfaceMesh;
         name    walls_sensor;
@@ -89,8 +95,8 @@ snapControls
     nSmoothPatch 3;
     tolerance 4.0;
     nSolveIter 30;
-    nRelaxIter 5;
-    nFeatureSnapIter 5;
+    nRelaxIter 10;
+    nFeatureSnapIter 10;
     //nFaceSplitInterval 15;
     implicitFeatureSnap true;
     explicitFeatureSnap false;
@@ -99,55 +105,52 @@ snapControls
 
 addLayersControls
 {
-    relativeSizes false;
+    relativeSizes true;
 
     layers
     {
         walls
         {
-            nSurfaceLayers 2;
-        }
-        
-        walls_sensor
-        {
-            nSurfaceLayers 2;
+            nSurfaceLayers 3;
         }
     }
 
-    meshShrinker    displacementMotionSolver;
+    /*meshShrinker    displacementMotionSolver;
     solver          displacementLaplacian;
     displacementLaplacianCoeffs
     {
-        diffusivity     inverseDistance (walls);
-    }
+        diffusivity     quadratic inverseDistance (walls);
+    }*/
 
-    expansionRatio 1.0;
-    finalLayerThickness 0.1;
-    minThickness 1e-6;
-    nGrow 5;
-    featureAngle 180;
-    nRelaxIter 50;
-    nSmoothSurfaceNormals 3;
-    nSmoothNormals 5;
+    expansionRatio 1.2;
+    finalLayerThickness 0.2;
+    minThickness 0.01;
+    nGrow -1;
+    featureAngle 90;
+    slipFeatureAngle 10;
+    //layerTerminationAngle -180;
+    nRelaxIter 5;
+    nSmoothSurfaceNormals 1;
+    nSmoothNormals 3;
     nSmoothThickness 10;
     maxFaceThicknessRatio 0.5;
     maxThicknessToMedialRatio 0.3;
-    minMedianAxisAngle 90;
-    nBufferCellsNoExtrude 1;
-    nLayerIter 100;
+    minMedialAxisAngle 90;
+    nBufferCellsNoExtrude 0;
+    nLayerIter 50;
 }
 
 meshQualityControls
 {
     maxNonOrtho 65;
-    maxBoundarySkewness 20;
+    maxBoundarySkewness 4;
     maxInternalSkewness 4;
     maxConcave 80;
-    minVol -1;
-    minTetQuality -1e+30;
+    minVol -1e+30;
+    minTetQuality 1e-15;
     minArea -1;
     minTwist 0.02;
-    minDeterminant 0.001;
+    minDeterminant -1;
     minFaceWeight 0.05;
     minVolRatio 0.01;
     minTriangleTwist -1;

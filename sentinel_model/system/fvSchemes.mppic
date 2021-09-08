@@ -21,17 +21,17 @@ ddtSchemes
 
 gradSchemes
 {
-    default         cellLimited Gauss linear 1;
+    default         Gauss linear;
 }
 
 divSchemes
 {
     default         none;
-    div(alphaPhi.air,U.air) bounded Gauss linearUpwind unlimited;
+    div(alphaPhi.air,U.air) Gauss linearUpwindV unlimited;
     div(((alpha.air*nuEff.air)*dev2(T(grad(U.air))))) Gauss linear;
-    div(phiGByA,kinematicCloud:alpha) bounded Gauss linearUpwind limited;
-    div(alphaPhi.air,epsilon.air) bounded Gauss linearUpwind limited;
-    div(alphaPhi.air,k.air) bounded Gauss linearUpwind limited;
+    div(phiGByA,kinematicCloud:alpha) Gauss linear;
+    div(alphaPhi.air,epsilon.air) Gauss limitedLinear 1;
+    div(alphaPhi.air,k.air) Gauss limitedLinear 1;
 }
 
 laplacianSchemes

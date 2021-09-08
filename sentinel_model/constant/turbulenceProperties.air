@@ -15,21 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-simulationType  LES;
-
-LES
-{
-    LESModel kEqn;
-
-    turbulence      on;
-    printCoeffs     on;
-
-    delta           cubeRootVol;
-
-    cubeRootVolCoeffs
-    {
-    }
-}
+simulationType  laminar;
 
 
 // ************************************************************************* //

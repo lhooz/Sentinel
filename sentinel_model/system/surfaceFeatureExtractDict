@@ -15,7 +15,7 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 allFeatureEdges
 {
-    surfaces    (sentinel_flatSensor.stl sensorPad_flatSensor.stl);
+    surfaces    (sentinel.stl sensor.stl);
 
     // Optional treatment of surface regions when loading
     // (single, file, offset, merge)

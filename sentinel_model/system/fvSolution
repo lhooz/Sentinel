@@ -20,7 +20,7 @@ solvers
     p
     {
         solver          GAMG;
-        tolerance       1e-06;
+        tolerance       1e-07;
         relTol          0.01;
         smoother        GaussSeidel;
     }
@@ -28,7 +28,7 @@ solvers
     pFinal
     {
         solver          GAMG;
-        tolerance       1e-06;
+        tolerance       1e-07;
         relTol          0;
         smoother        GaussSeidel;
     }
@@ -37,7 +37,7 @@ solvers
     {
         solver          smoothSolver;
         smoother        symGaussSeidel;
-        tolerance       1e-05;
+        tolerance       1e-08;
         relTol          0.1;
     }
 
@@ -45,14 +45,14 @@ solvers
     {
         solver          smoothSolver;
         smoother        symGaussSeidel;
-        tolerance       1e-05;
+        tolerance       1e-08;
         relTol          0.1;
     }
 
     kinematicCloud:alpha
     {
         solver          GAMG;
-        tolerance       1e-06;
+        tolerance       1e-08;
         relTol          0.1;
         smoother        GaussSeidel;
     }
@@ -61,9 +61,9 @@ solvers
 PIMPLE
 {
     nOuterCorrectors 1;
-    nCorrectors     4;
+    nCorrectors     2;
     momentumPredictor yes;
-    nNonOrthogonalCorrectors 2;
+    nNonOrthogonalCorrectors 0;
 }
 
 relaxationFactors

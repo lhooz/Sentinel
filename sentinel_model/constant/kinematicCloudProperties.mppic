@@ -72,8 +72,8 @@ subModels
             parcelBasisType fixed;
             patch           inlet;
             duration        1;
-            parcelsPerSecond 2.16e7;//harvest
-            //parcelsPerSecond 1.31e5;//typical
+            parcelsPerSecond 4.32e6;//harvest
+            //parcelsPerSecond 2.62e4;//typical
             nParticle       1;
             massTotal       1;//not used
             SOI             0;
@@ -84,10 +84,14 @@ subModels
                 type        normal;
                 normalDistribution
                 {
-                    expectation 5.8e-6;//particle diameter
-                    variance 1e-6;
-                    minValue 5e-6;
-                    maxValue 7e-6;
+                    expectation 29e-6;//particle diameter
+                    variance 2.9e-6;
+                    minValue 20e-6;
+                    maxValue 38e-6;
+                    /*expectation 116e-6;
+                    variance 25e-6;
+                    minValue 20e-6;
+                    maxValue 180e-6;*/
                 }
             }
         }
