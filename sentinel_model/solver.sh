@@ -1,8 +1,8 @@
 #!/bin/bash
 . ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions
 
-cp -f constant/turbulenceProperties.air.laminar constant/turbulenceProperties.air
-#cp -f constant/turbulenceProperties.air.LES constant/turbulenceProperties.air       
+#cp -f constant/turbulenceProperties.air.laminar constant/turbulenceProperties.air
+cp -f constant/turbulenceProperties.air.LES constant/turbulenceProperties.air       
 
 restore0Dir
 

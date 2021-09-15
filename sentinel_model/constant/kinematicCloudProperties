@@ -72,8 +72,8 @@ subModels
             parcelBasisType fixed;
             patch           inlet;
             duration        1;
-            parcelsPerSecond 4.32e6;//harvest
-            //parcelsPerSecond 2.62e4;//typical
+            parcelsPerSecond 2.16e7;//harvest
+            //parcelsPerSecond 1.31e5;//typical
             nParticle       1;
             massTotal       1;//not used
             SOI             0;

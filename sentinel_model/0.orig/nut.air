@@ -39,7 +39,9 @@ boundaryField
 
     "walls.*"
     {
-        type               calculated;
+        /*type               calculated;
+        value              $internalField;*/
+        type               nutkWallFunction;
         value              $internalField;
     }
 }
