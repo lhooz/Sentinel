@@ -57,10 +57,11 @@ subModels
 {
     particleForces
     {
-        ErgunWenYuDrag
+        /*ErgunWenYuDrag
         {
             alphac alpha.air;
-        }
+        }*/
+        sphereDrag;
         gravity;
     }
 
@@ -84,10 +85,14 @@ subModels
                 type        normal;
                 normalDistribution
                 {
-                    expectation 29e-6;//particle diameter
+                    expectation 5.8e-6;//particle diameter
+                    variance 1e-6;
+                    minValue 4e-6;
+                    maxValue 8e-6;
+                    /*expectation 29e-6;//particle diameter
                     variance 2.9e-6;
                     minValue 20e-6;
-                    maxValue 38e-6;
+                    maxValue 38e-6;*/
                     /*expectation 116e-6;
                     variance 25e-6;
                     minValue 20e-6;
@@ -108,21 +113,21 @@ subModels
             walls_sensor
             {
                 type stick;
-                UrMax   1e-4;
+                UrMax   1e-3;
             }
             walls
             {
                 type rebound;
                 e    0.97;
                 mu   0.09;
-                UrMax   1e-4;
+                UrMax   1e-3;
             }
             inlet
             {
                 type rebound;
                 e    0.97;
                 mu   0.09;
-                UrMax   1e-4;
+                UrMax   1e-3;
             }
             "outlet|left|right|up|down"
             {
@@ -135,7 +140,7 @@ subModels
 
     surfaceFilmModel none;
 
-    packingModel implicit;//explicit;
+    packingModel explicit;//implicit;
 
     explicitCoeffs
     {
