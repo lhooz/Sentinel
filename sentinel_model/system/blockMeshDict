@@ -17,9 +17,9 @@ scale   1;
 
 xl -0.3;
 xu 0.3;
-yl -0.3;
-yu 0.4;
-zl -0.45;
+yl -0.25;
+yu 0.5;
+zl -0.4;
 zu 0.3;
 
 vertices
@@ -37,7 +37,8 @@ vertices
 blocks
 (
     //hex (0 1 2 3 4 5 6 7) (30 35 38) 
-    hex (0 1 2 3 4 5 6 7) (40 47 50) 
+    //hex (0 1 2 3 4 5 6 7) (40 47 50) 
+    hex (0 1 2 3 4 5 6 7) (60 75 70) 
     simpleGrading 
     (1 1 1)
 );
@@ -66,12 +67,21 @@ boundary
         );
     }
     
-    up
+    inlet
     {
-        type symmetry;
+        type patch;
         faces
         (
             (4 5 6 7)
+        );
+    }
+    
+    outlet
+    {
+        type patch;
+        faces
+        (
+            (0 3 2 1)
         );
     }
     
@@ -80,22 +90,13 @@ boundary
         type symmetry;
         faces
         (
-            (0 3 2 1)
-        );
-    }
-    
-    inlet
-    {
-        type patch;
-        faces
-        (
             (0 1 5 4)
         );
     }
     
-    outlet
+    up
     {
-        type patch;
+        type symmetry;
         faces
         (
             (3 7 6 2)
