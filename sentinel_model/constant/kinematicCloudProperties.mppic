@@ -78,21 +78,21 @@ subModels
             nParticle       1;
             massTotal       1;//not used
             SOI             0;
-            U0              (0 5 0);
+            U0              (0 0 -5);
             flowRateProfile constant 1;
             sizeDistribution
             {
                 type        normal;
                 normalDistribution
                 {
-                    expectation 5.8e-6;//particle diameter
+                    /*expectation 5.8e-6;//particle diameter
                     variance 1e-6;
                     minValue 4e-6;
-                    maxValue 8e-6;
-                    /*expectation 29e-6;//particle diameter
+                    maxValue 8e-6;*/
+                    expectation 29e-6;//particle diameter
                     variance 2.9e-6;
                     minValue 20e-6;
-                    maxValue 38e-6;*/
+                    maxValue 38e-6;
                     /*expectation 116e-6;
                     variance 25e-6;
                     minValue 20e-6;
